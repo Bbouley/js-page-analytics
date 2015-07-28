@@ -33,4 +33,30 @@ $(document).on('ready', function() {
         $startTime = $.now();
     });
 
+      $(window).on('load', function(){
+          $timeIn = '0';
+      $('.navbar').on({ mouseenter: function(){
+        $timeIn = $.now();
+         },
+       mouseleave : function(){
+        var $timeOut = $.now();
+        var $totalTime = $timeOut - $timeIn;
+        console.log($totalTime);
+      }
+      });
+    });
+
+   $(window).on('load', function(){
+            $timeIn = '0';
+        $('#blogPost1').on({ mouseenter: function(){
+          $timeIn = $.now();
+           },
+         mouseleave : function(){
+          var $timeOut = $.now();
+          var $totalTime = $timeOut - $timeIn;
+          console.log($totalTime);
+        }
+        });
+      });
+
 });
