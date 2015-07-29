@@ -15,14 +15,12 @@ $(document).on('ready', function() {
 
 
         $('.btninfo').on('click', function(){
+
           var $endTime2 = $.now();
           var $timeSpent2 = $endTime2 - $startTime2;
           var $minutesSpent2 = ($timeSpent2/60000).toFixed(4);
-          console.log($minutesSpent2 + ' minutes');
 
-          $('.mainContent').append('<p>test</p>');
-
-          $('.btninfo').html('<p>'+ $percentseen + '<br>'+ $distance + '<br>' + $minutesSpent2 + ' minutes' + '</p>');
+          $('.btninfo').html('<p>Percentage<br>Seen:<br>'+ $percentseen + '<br><br>Distance<br>Scrolled:<br>'+ $distance + '<br><br>Time on<br>page<br>' + $minutesSpent2 + ' minutes' + '</p>');
           });
 
 
