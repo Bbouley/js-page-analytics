@@ -35,8 +35,9 @@ $(document).on('ready', function() {
       $('.btnRead').on('click', function(){
         var $endTime = $.now();
         var $timeSpent = $endTime - $startTime;
-        var $minutesSpent = ($timeSpent/1000).toFixed(4);
-        console.log($minutesSpent + ' minutes');
+        var $minutesSpent = ($timeSpent/1000).toFixed(2);
+        $('.btnRead').html('<p>It took ' + $minutesSpent + ' seconds to click');
+        return $minutesSpent + ' seconds';
         $startTime = $.now();
     });
 
