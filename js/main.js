@@ -12,20 +12,21 @@ $(document).on('ready', function() {
   var $startTime2 = $.now();
 
   $(window).on('scroll', function(){
+
     var $wintop = $(window).scrollTop();
     var $docheight = $(document).height();
     var $winheight = $(window).height();
     var $percentseen = ($wintop/($docheight-$winheight)*100).toFixed(2) + '%';
-   var $distance = ($wintop*0.026458333).toFixed(2) + 'mm';
+    var $distance = ($wintop*0.026458333).toFixed(2) + 'mm';
 
 
         $('.btninfo').on('click', function(){
 
           var $endTime2 = $.now();
           var $timeSpent2 = $endTime2 - $startTime2;
-          var $minutesSpent2 = ($timeSpent2/60000).toFixed(2);
+          var $minutesSpent2 = ($timeSpent2/1000).toFixed(2);
 
-          $('.btninfo').html('<p>Percentage<br>Seen:<br>'+ $percentseen + '<br><br>Distance<br>Scrolled:<br>'+ $distance + '<br><br>Time on<br>page<br>' + $minutesSpent2 + ' minutes' + '<br><br>Time on<br>NavBar:<br>'+ ($totalTimeNavbar/60000).toFixed(2) + 'minutes<br>' + '<br>Time on<br>Blog Post 1:<br>' + ($totalTimeBlogPost1/60000).toFixed(2) + 'minutes<br><br>Time on<br>Blog Post 2:<br>' + ($totalTimeBlogPost2/60000).toFixed(2) + 'minutes<br><br>Time on<br>Blog Post 3:<br>' + ($totalTimeBlogPost1/60000).toFixed(2) + 'minutes</p>');
+          $('.btninfo').html('<p>Percentage<br>Seen:<br>'+ $percentseen + '<br><br>Distance<br>Scrolled:<br>'+ $distance + '<br><br>Time on<br>page<br>' + $minutesSpent2 + ' seconds' + '<br><br>Time on<br>NavBar:<br>'+ ($totalTimeNavbar/1000).toFixed(2) + 'seconds<br>' + '<br>Time on<br>Blog Post 1:<br>' + ($totalTimeBlogPost1/1000).toFixed(2) + 'seconds<br><br>Time on<br>Blog Post 2:<br>' + ($totalTimeBlogPost2/1000).toFixed(2) + 'seconds<br><br>Time on<br>Blog Post 3:<br>' + ($totalTimeBlogPost3/1000).toFixed(2) + 'seconds</p>');
           });
 
 
@@ -34,7 +35,7 @@ $(document).on('ready', function() {
       $('.btnRead').on('click', function(){
         var $endTime = $.now();
         var $timeSpent = $endTime - $startTime;
-        var $minutesSpent = ($timeSpent/60000).toFixed(4);
+        var $minutesSpent = ($timeSpent/1000).toFixed(4);
         console.log($minutesSpent + ' minutes');
         $startTime = $.now();
     });
