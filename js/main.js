@@ -3,6 +3,11 @@
 $(document).on('ready', function() {
   console.log('sanity check!');
 
+  var $totalTimeNavbar = 0;
+  var $totalTimeBlogPost1 = 0;
+  var $totalTimeBlogPost2 = 0;
+  var $totalTimeBlogPost3 = 0;
+
   var $startTime = $.now();
   var $startTime2 = $.now();
 
@@ -18,9 +23,9 @@ $(document).on('ready', function() {
 
           var $endTime2 = $.now();
           var $timeSpent2 = $endTime2 - $startTime2;
-          var $minutesSpent2 = ($timeSpent2/60000).toFixed(4);
+          var $minutesSpent2 = ($timeSpent2/60000).toFixed(2);
 
-          $('.btninfo').html('<p>Percentage<br>Seen:<br>'+ $percentseen + '<br><br>Distance<br>Scrolled:<br>'+ $distance + '<br><br>Time on<br>page<br>' + $minutesSpent2 + ' minutes' + '</p>');
+          $('.btninfo').html('<p>Percentage<br>Seen:<br>'+ $percentseen + '<br><br>Distance<br>Scrolled:<br>'+ $distance + '<br><br>Time on<br>page<br>' + $minutesSpent2 + ' minutes' + '<br><br>Time on<br>NavBar:<br>'+ ($totalTimeNavbar/60000).toFixed(2) + 'minutes<br>' + '<br>Time on<br>Blog Post 1:<br>' + ($totalTimeBlogPost1/60000).toFixed(2) + 'minutes<br><br>Time on<br>Blog Post 2:<br>' + ($totalTimeBlogPost2/60000).toFixed(2) + 'minutes<br><br>Time on<br>Blog Post 3:<br>' + ($totalTimeBlogPost1/60000).toFixed(2) + 'minutes</p>');
           });
 
 
@@ -35,14 +40,13 @@ $(document).on('ready', function() {
     });
 
       $(window).on('load', function(){
-          $timeIn = '0';
+            $timeIn = '0';
       $('.navbar').on({ mouseenter: function(){
         $timeIn = $.now();
          },
        mouseleave : function(){
         var $timeOut = $.now();
-        var $totalTime = $timeOut - $timeIn;
-        console.log($totalTime);
+        $totalTimeNavbar = $totalTimeNavbar+($timeOut - $timeIn);
       }
       });
     });
@@ -54,8 +58,7 @@ $(document).on('ready', function() {
            },
          mouseleave : function(){
           var $timeOut = $.now();
-          var $totalTime = $timeOut - $timeIn;
-          console.log($totalTime);
+          $totalTimeBlogPost1 = $totalTimeBlogPost1+($timeOut - $timeIn);
         }
         });
       });
@@ -67,8 +70,7 @@ $(document).on('ready', function() {
                },
              mouseleave : function(){
               var $timeOut = $.now();
-              var $totalTime = $timeOut - $timeIn;
-              console.log($totalTime);
+              $totalTimeBlogPost2 = $totalTimeBlogPost2+($timeOut - $timeIn);
             }
             });
           });
@@ -80,8 +82,7 @@ $(document).on('ready', function() {
                  },
                mouseleave : function(){
                 var $timeOut = $.now();
-                var $totalTime = $timeOut - $timeIn;
-                console.log($totalTime);
+                $totalTimeBlogPost3 = $totalTimeBlogPost3+($timeOut - $timeIn);
               }
               });
             });
