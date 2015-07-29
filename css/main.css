@@ -13,4 +13,10 @@ footer {
   height: 200px;
   background: black;
   color: white;
+  margin-left: 10px;
+}
+
+.showStats{
+  height: 100px;
+  background: black;
 }

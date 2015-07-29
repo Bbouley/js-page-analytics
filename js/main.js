@@ -19,6 +19,9 @@ $(document).on('ready', function() {
           var $timeSpent2 = $endTime2 - $startTime2;
           var $minutesSpent2 = ($timeSpent2/60000).toFixed(4);
           console.log($minutesSpent2 + ' minutes');
+
+          $('.mainContent').append('<p>test</p>');
+
           $('.btninfo').html('<p>'+ $percentseen + '<br>'+ $distance + '<br>' + $minutesSpent2 + ' minutes' + '</p>');
           });
 
@@ -48,7 +51,7 @@ $(document).on('ready', function() {
 
    $(window).on('load', function(){
             $timeIn = '0';
-        $('#blogPost1').on({ mouseenter: function(){
+        $('.blogPost1').on({ mouseenter: function(){
           $timeIn = $.now();
            },
          mouseleave : function(){
@@ -59,4 +62,29 @@ $(document).on('ready', function() {
         });
       });
 
+      $(window).on('load', function(){
+                $timeIn = '0';
+            $('.blogPost2').on({ mouseenter: function(){
+              $timeIn = $.now();
+               },
+             mouseleave : function(){
+              var $timeOut = $.now();
+              var $totalTime = $timeOut - $timeIn;
+              console.log($totalTime);
+            }
+            });
+          });
+
+      $(window).on('load', function(){
+                  $timeIn = '0';
+              $('.blogPost3').on({ mouseenter: function(){
+                $timeIn = $.now();
+                 },
+               mouseleave : function(){
+                var $timeOut = $.now();
+                var $totalTime = $timeOut - $timeIn;
+                console.log($totalTime);
+              }
+              });
+            });
 });
