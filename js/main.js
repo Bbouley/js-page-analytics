@@ -8,6 +8,8 @@ $(document).on('ready', function() {
   var $totalTimeBlogPost2 = 0;
   var $totalTimeBlogPost3 = 0;
 
+
+
   var $startTime = $.now();
   var $startTime2 = $.now();
 
@@ -28,6 +30,7 @@ $(document).on('ready', function() {
 
           $('.btninfo').html('<p>Percentage<br>Seen:<br>'+ $percentseen + '<br><br>Distance<br>Scrolled:<br>'+ $distance + '<br><br>Time on<br>page<br>' + $minutesSpent2 + ' seconds' + '<br><br>Time on<br>NavBar:<br>'+ ($totalTimeNavbar/1000).toFixed(2) + 'seconds<br>' + '<br>Time on<br>Blog Post 1:<br>' + ($totalTimeBlogPost1/1000).toFixed(2) + 'seconds<br><br>Time on<br>Blog Post 2:<br>' + ($totalTimeBlogPost2/1000).toFixed(2) + 'seconds<br><br>Time on<br>Blog Post 3:<br>' + ($totalTimeBlogPost3/1000).toFixed(2) + 'seconds</p>');
           });
+
 
 
       });
@@ -62,8 +65,10 @@ $(document).on('ready', function() {
           var $timeOut = $.now();
           $totalTimeBlogPost1 = $totalTimeBlogPost1+($timeOut - $timeIn);
         }
-        });
       });
+    });
+
+
 
       $(window).on('load', function(){
                 $timeIn = '0';
@@ -88,4 +93,33 @@ $(document).on('ready', function() {
               }
               });
             });
+
+      $('#heatmap').on('click', function(){
+        var arrayTime = [$totalTimeNavbar, $totalTimeBlogPost1, $totalTimeBlogPost2, $totalTimeBlogPost3];
+
+        var arrayDiv = [ ($('.navbar')), ($('.blogPost1')), ($('.blogPost2')), ($('.blogPost3'))];
+
+       function checkHeat(value1, div1){
+            if(value1 <= 10000){
+              div1.css('background', 'rgba(0,255,0,0.3');
+            } else if (value1 > 10000 && value1 <= 20000){
+              div1.css('background', 'rgba(255,255,0,0.3');
+            } else if(value1>=20000) {
+              div1.css('background', 'rgba(255,0,0,0.3)');
+            }
+          }
+
+          for (var i = 0; i < arrayTime.length; i++) {
+            var value1 = arrayTime[i];
+            var div1 = arrayDiv[i];
+            checkHeat(value1, div1);
+          }
+      });
+
+      // if($totalTimeBlogPost1 > 10000){
+      //   $('.blogPost1').css('background', 'red');
+      //     }
+
+
+
 });
